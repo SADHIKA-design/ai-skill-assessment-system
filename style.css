@@ -1,0 +1,151 @@
+/* ===============================
+   GLOBAL STYLES
+================================= */
+
+body {
+    font-family: "Arial", sans-serif;
+    background: #0f172a;
+    color: #f8fafc;
+    margin: 0;
+    padding: 0;
+}
+
+/* ===============================
+   CENTER HOME PAGE
+================================= */
+
+.center {
+    text-align: center;
+    margin-top: 120px;
+}
+
+.center h1 {
+    font-size: 36px;
+    color: #38bdf8;
+}
+
+.center p {
+    color: #94a3b8;
+}
+
+/* ===============================
+   CONTAINER (FORM / TEST / REPORT)
+================================= */
+
+.container {
+    width: 60%;
+    margin: auto;
+    margin-top: 50px;
+    background: #1e293b;
+    padding: 25px;
+    border-radius: 12px;
+    box-shadow: 0 10px 25px rgba(0,0,0,0.4);
+}
+
+/* ===============================
+   INPUT FIELDS
+================================= */
+
+input, select {
+    width: 100%;
+    padding: 12px;
+    margin: 8px 0;
+    border: none;
+    border-radius: 8px;
+    outline: none;
+    background: #334155;
+    color: white;
+}
+
+input:focus, select:focus {
+    border: 1px solid #38bdf8;
+}
+
+/* ===============================
+   BUTTONS
+================================= */
+
+button {
+    padding: 12px 20px;
+    background: linear-gradient(90deg, #ef4444, #f97316);
+    color: white;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    font-weight: bold;
+    transition: 0.3s;
+}
+
+button:hover {
+    transform: scale(1.05);
+}
+
+/* ===============================
+   QUESTION BOX
+================================= */
+
+.question-box {
+    background: #334155;
+    padding: 15px;
+    margin: 10px 0;
+    border-radius: 10px;
+}
+
+/* ===============================
+   PROGRESS BAR (SKILL LEVEL)
+================================= */
+
+.bar-bg {
+    width: 100%;
+    background: #475569;
+    border-radius: 10px;
+    overflow: hidden;
+    margin-top: 10px;
+}
+
+.bar {
+    height: 20px;
+    background: linear-gradient(90deg, #22c55e, #38bdf8);
+    width: 0%;
+    transition: width 0.5s ease-in-out;
+}
+
+/* ===============================
+   SKILL REPORT BOX
+================================= */
+
+.report-box {
+    background: #1e293b;
+    padding: 20px;
+    border-radius: 12px;
+    margin-top: 20px;
+}
+
+.section-title {
+    color: #38bdf8;
+    margin-top: 15px;
+}
+
+/* ===============================
+   TAGS (Strength / Weakness)
+================================= */
+
+.tag {
+    display: inline-block;
+    padding: 5px 10px;
+    margin: 3px;
+    border-radius: 6px;
+    font-size: 12px;
+}
+
+.tag-good {
+    background: #16a34a;
+}
+
+.tag-bad {
+    background: #dc2626;
+}
+
+.tag-medium {
+    background: #f59e0b;
+}

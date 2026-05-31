@@ -1,0 +1,170 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Student Form</title>
+    <link rel="stylesheet" href="/static/style.css">
+</head>
+
+<body>
+
+<div class="container">
+
+<h2>🧠 Student Skill Setup</h2>
+
+<form action="/generate" method="POST">
+
+<!-- NAME -->
+<input name="name" placeholder="Full Name" required>
+
+<!-- AGE -->
+<input name="age" placeholder="Age" required>
+
+<!-- STREAM -->
+<select name="stream" id="stream" required>
+    <option value="">Select Stream</option>
+    <option value="Science">Science</option>
+    <option value="Commerce">Commerce</option>
+    <option value="Humanities">Humanities</option>
+    <option value="Vocational">Vocational</option>
+</select>
+
+<br><br>
+
+<!-- COURSE -->
+<select name="course" id="course" required>
+    <option value="">Select Course</option>
+</select>
+
+<br><br>
+
+<!-- SPECIALIZATION -->
+<select name="specialization" id="specialization" required>
+    <option value="">Select Specialization</option>
+</select>
+
+<br><br>
+
+<!-- YEAR -->
+<select name="year" required>
+    <option value="1st Year">1st Year</option>
+    <option value="2nd Year">2nd Year</option>
+    <option value="3rd Year">3rd Year</option>
+    <option value="4th Year">4th Year</option>
+    <option value="Final Year">Final Year</option>
+</select>
+
+<br><br>
+
+<!-- DIFFICULTY -->
+<select name="difficulty" required>
+    <option value="Easy">Easy</option>
+    <option value="Medium">Medium</option>
+    <option value="Hard">Hard</option>
+</select>
+
+<br><br>
+
+<button type="submit">🚀 Generate Test</button>
+
+</form>
+
+</div>
+
+<!-- ================= JAVASCRIPT ================= -->
+<script>
+window.onload = function() {
+
+const data = {
+    Science: {
+        "Engineering": [
+            "Mechanical Engineering",
+            "Electronics & Communication",
+            "Computer Science",
+            "Civil Engineering",
+            "Chemical Engineering"
+        ],
+        "Pure Science": [
+            "Physics",
+            "Chemistry",
+            "Mathematics"
+        ]
+    },
+
+    Commerce: {
+        "Business": [
+            "Accounting",
+            "Finance",
+            "Marketing"
+        ],
+        "Management": [
+            "HR Management",
+            "Business Analytics"
+        ]
+    },
+
+    Humanities: {
+        "Arts": [
+            "Psychology",
+            "Sociology"
+        ],
+        "Languages": [
+            "English Literature",
+            "Linguistics"
+        ]
+    },
+
+    Vocational: {
+        "Technical Skills": [
+            "Web Development",
+            "Electrician Skills",
+            "Design"
+        ]
+    }
+};
+
+// ELEMENTS
+const stream = document.getElementById("stream");
+const course = document.getElementById("course");
+const specialization = document.getElementById("specialization");
+
+// STREAM → COURSE
+stream.onchange = function() {
+
+    course.innerHTML = "<option value=''>Select Course</option>";
+    specialization.innerHTML = "<option value=''>Select Specialization</option>";
+
+    let selectedStream = this.value;
+
+    if (data[selectedStream]) {
+        for (let key in data[selectedStream]) {
+            let option = document.createElement("option");
+            option.value = key;
+            option.textContent = key;
+            course.appendChild(option);
+        }
+    }
+};
+
+// COURSE → SPECIALIZATION
+course.onchange = function() {
+
+    specialization.innerHTML = "<option value=''>Select Specialization</option>";
+
+    let streamValue = stream.value;
+    let courseValue = this.value;
+
+    if (data[streamValue] && data[streamValue][courseValue]) {
+        data[streamValue][courseValue].forEach(function(item) {
+            let option = document.createElement("option");
+            option.value = item;
+            option.textContent = item;
+            specialization.appendChild(option);
+        });
+    }
+};
+
+};
+</script>
+
+</body>
+</html>

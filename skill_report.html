@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Skill Report</title>
+
+    <style>
+        body {
+            font-family: Arial;
+            background: #0f172a;
+            color: white;
+            text-align: center;
+            margin: 0;
+        }
+
+        .box {
+            width: 65%;
+            margin: auto;
+            margin-top: 40px;
+            background: #111827;
+            padding: 30px;
+            border-radius: 12px;
+            box-shadow: 0 0 20px rgba(0,0,0,0.5);
+        }
+
+        .section {
+            text-align: left;
+            margin-top: 20px;
+            background: #1f2937;
+            padding: 15px;
+            border-radius: 10px;
+        }
+
+        .bar-bg {
+            width: 100%;
+            background: #374151;
+            height: 20px;
+            border-radius: 10px;
+            margin-top: 10px;
+        }
+
+        .bar {
+            height: 20px;
+            background: linear-gradient(90deg, #ef4444, #22c55e);
+            border-radius: 10px;
+            width: 0%;
+        }
+
+        .tag {
+            display: inline-block;
+            padding: 5px 10px;
+            margin: 3px;
+            border-radius: 6px;
+            font-size: 12px;
+        }
+
+        .good { background: #16a34a; }
+        .bad { background: #dc2626; }
+        .medium { background: #f59e0b; }
+
+        button {
+            margin-top: 20px;
+            padding: 10px 20px;
+            background: #ef4444;
+            border: none;
+            color: white;
+            cursor: pointer;
+            border-radius: 6px;
+        }
+    </style>
+</head>
+
+<body>
+
+<div class="box">
+
+    <h1>📊 Skill Intelligence Report</h1>
+
+    <h2>Score: {{ score }}%</h2>
+    <p>Name: {{ name }}</p>
+    <p>Total Questions: {{ total }}</p>
+
+    <!-- PROGRESS BAR -->
+    <div class="bar-bg">
+        <div class="bar" id="bar"></div>
+    </div>
+
+    <script>
+        let score = Number("{{ score | default(0) }}");
+        document.getElementById("bar").style.width = score + "%";
+    </script>
+
+    <!-- LEVEL -->
+    <div class="section">
+        {% if score >= 80 %}
+            <h2>🔥 Advanced Level – Internship Ready</h2>
+        {% elif score >= 50 %}
+            <h2>⚡ Intermediate Level – Improving</h2>
+        {% else %}
+            <h2>📘 Beginner Level – Needs Practice</h2>
+        {% endif %}
+    </div>
+
+    <!-- STRENGTHS -->
+    <div class="section">
+        <h3>💪 Strengths</h3>
+        {% for s in strength %}
+            <span class="tag good">{{ s }}</span>
+        {% endfor %}
+    </div>
+
+    <!-- WEAKNESSES -->
+    <div class="section">
+        <h3>⚠ Weaknesses</h3>
+        {% for w in weakness %}
+            <span class="tag bad">{{ w }}</span>
+        {% endfor %}
+    </div>
+
+    <!-- SKILLS GAINED -->
+    <div class="section">
+        <h3>🧠 Skills Gained</h3>
+        {% for g in gained %}
+            <span class="tag medium">{{ g }}</span>
+        {% endfor %}
+    </div>
+
+    <!-- IMPROVEMENT PLAN -->
+    <div class="section">
+        <h3>📈 Improvement Plan</h3>
+        <ul>
+            {% for p in plan %}
+                <li>{{ p }}</li>
+            {% endfor %}
+        </ul>
+    </div>
+
+    <a href="/form">
+        <button>🔁 Try Again</button>
+    </a>
+
+</div>
+
+</body>
+</html>
